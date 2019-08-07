@@ -2,16 +2,17 @@ import React from 'react'
 
 class Conversation extends React.Component {
   render () {
+    console.log('propssss', this)
     return (
       <div className='conversation'>
         <img src='telegram.png' />
         <div>
           <div className='name-date'>
-            <span>zahra kabiri</span>
+            <span>{this.props.name} {this.props.lastName}</span>
             <span> today</span>
           </div>
           <div className='name-date'>
-            <span>hello</span>
+            <span>{this.props.latestMessage}</span>
             <span className='unseen'> 3</span>
           </div>
         </div>
