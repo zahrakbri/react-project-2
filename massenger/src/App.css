@@ -56,3 +56,7 @@
   flex-grow: 1;
   border-top: 1px solid;
 }
+
+.error {
+  color: red;
+}
