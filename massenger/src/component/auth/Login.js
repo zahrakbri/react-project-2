@@ -11,23 +11,28 @@ export default class Login extends React.Component {
     }
   }
 
-  handlePassword (event) {
-    this.setState({ password: event.target.value })
+  handleChange (event) {
+    let name = event.target.name
+    console.log('eee', event.target.value)
+
+    this.setState({ [name]: event.target.value }, () => console.log('CALLBACK', this.state.email))
+    console.log('email', this.state.email)
   }
 
   render () {
-    console.log('this', this.state)
     return (
       <div className='container'>
         <div className='loginPage'>
           <img src={logo} width='50px' style={{ alignSelf: 'center' }} />
           <input type='text' placeholder='email'
-            onChange={(event) => this.setState({ email: event.target.value })}
+            name='email'
+            onChange={(event) => this.handleChange(event)}
             onBlur={() => console.log('blur')}
           />
           <input
             type='password'
-            onChange={(event) => this.handlePassword(event)}
+            name='password'
+            onChange={(event) => this.handleChange(event)}
             placeholder='password' />
           <button onClick={() => console.log('dfghbnjmk')} >Login</button>
         </div>
