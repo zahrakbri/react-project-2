@@ -6,19 +6,30 @@ export default class Login extends React.Component {
     super()
 
     this.state = {
-      email: 'z@k.com',
+      email: '',
       password: ''
     }
   }
+
+  handlePassword (event) {
+    this.setState({ password: event.target.value })
+  }
+
   render () {
-    console.log('this', this)
+    console.log('this', this.state)
     return (
       <div className='container'>
         <div className='loginPage'>
           <img src={logo} width='50px' style={{ alignSelf: 'center' }} />
-          <input type='text' placeholder='email' value={this.state.email} />
-          <input type='password' placeholder='password' />
-          <button>Login</button>
+          <input type='text' placeholder='email'
+            onChange={(event) => this.setState({ email: event.target.value })}
+            onBlur={() => console.log('blur')}
+          />
+          <input
+            type='password'
+            onChange={(event) => this.handlePassword(event)}
+            placeholder='password' />
+          <button onClick={() => console.log('dfghbnjmk')} >Login</button>
         </div>
       </div>
     )
