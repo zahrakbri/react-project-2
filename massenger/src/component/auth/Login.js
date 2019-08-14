@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../logo.svg'
 import validate from '../../validation/ValidateFunction'
+import { Link } from 'react-router-dom'
 
 export default class Login extends React.Component {
   constructor (props) {
@@ -68,7 +69,9 @@ export default class Login extends React.Component {
           { this.state.errors.password !== null &&
             <span className='error'>{this.state.errors.password}</span>
           }
-          <button onClick={() => this.handleError()} >Login</button>
+          <button onClick={() => this.handleError()} >
+            <Link to='/messenger/'>Login</Link>
+          </button>
         </div>
       </div>
     )
