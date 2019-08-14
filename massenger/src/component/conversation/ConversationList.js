@@ -2,18 +2,64 @@ import React from 'react'
 import Conversation from './Conversation'
 
 class ConversationList extends React.Component {
+  constructor () {
+    super()
+
+    this.state = {
+      conversationList: [
+        {
+          firstName: 'zahra',
+          lastName: 'Masoumi',
+          latestMessage: 'Hi',
+          unseenMessage: '5',
+          profile: 'http://....'
+        },
+        {
+          firstName: 'Aida',
+          lastName: 'Rezakhani',
+          latestMessage: 'Hi',
+          unseenMessage: '3',
+          profile: 'http://....'
+        },
+        {
+          firstName: 'zahra',
+          lastName: 'Masoumi',
+          latestMessage: 'Hi',
+          unseenMessage: '0',
+          profile: 'http://....'
+        },
+        {
+          firstName: 'Hadi',
+          lastName: 'AzizPour',
+          latestMessage: 'Hi',
+          unseenMessage: '0',
+          profile: 'http://....'
+        },
+        {
+          firstName: 'Sharareh',
+          lastName: 'Rahimi',
+          latestMessage: 'Hi',
+          unseenMessage: '6',
+          profile: 'http://....'
+        }
+      ]
+    }
+  }
   render () {
     return (
       <div className='conversation-list'>
-        <Conversation
-          name='farimah'
-          lastName='Ghazi'
-          latestMessage='hi!'
-        />
-        <Conversation name='Aida' lastName='Reza Khani' />
-        <Conversation name='Delaram' lastName='Esfahani' />
-        <Conversation name='Hadi' lastName='Aziz poor' />
-        <Conversation name='Armin' lastName='poolaei' />
+        { this.state.conversationList.map((item, index) => {
+          return (
+            <Conversation
+              key={index}
+              name={item.firstName}
+              lastName={item.lastName}
+              latestMessage={item.latestMessage}
+              unseenMessage={item.unseenMessage} />
+          )
+        })
+
+        }
       </div>
     )
   }

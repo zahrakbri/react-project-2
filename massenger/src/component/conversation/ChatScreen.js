@@ -1,4 +1,5 @@
 import React from 'react'
+import MessagesBox from './MessagesBox'
 
 class ChatScreen extends React.Component {
   render () {
@@ -7,9 +8,7 @@ class ChatScreen extends React.Component {
         <div className='header'>
           header
         </div>
-        <div className='messages-box'>
-          messages-box
-        </div>
+        <MessagesBox />
         <div className='footer' >
           footer
         </div>

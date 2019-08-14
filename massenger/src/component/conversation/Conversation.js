@@ -13,7 +13,7 @@ class Conversation extends React.Component {
           </div>
           <div className='name-date'>
             <span>{this.props.latestMessage}</span>
-            <span className='unseen'> 3</span>
+            <span className='unseen'> {this.props.unseenMessage}</span>
           </div>
         </div>
       </div>

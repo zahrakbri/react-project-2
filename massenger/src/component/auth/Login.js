@@ -3,8 +3,8 @@ import logo from '../../logo.svg'
 import validate from '../../validation/ValidateFunction'
 
 export default class Login extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       fields: {
@@ -41,20 +41,25 @@ export default class Login extends React.Component {
     this.setState({ errors })
   }
 
+  handleEmail (e) {
+    this.setState({ ...this.state, fields: { ...this.state.fields, email: e.target.value } })
+  }
+
   render () {
+    console.log('state', this.state)
     return (
       <div className='container'>
         <div className='loginPage'>
           <img src={logo} width='50px' style={{ alignSelf: 'center' }} />
           <input type='text' placeholder='email'
             name='email'
-            onChange={(event) => this.handleChange(event)}
+            onChange={(e) => this.handleEmail(e)}
             onBlur={() => console.log('blur')}
+            className={this.state.errors.email !== null ? 'errorInput' : 'correctInput'}
           />
           { this.state.errors.email !== null &&
             <span className='error'>{this.state.errors.email}</span>
           }
-          
           <input
             type='password'
             name='password'
@@ -63,7 +68,6 @@ export default class Login extends React.Component {
           { this.state.errors.password !== null &&
             <span className='error'>{this.state.errors.password}</span>
           }
-          
           <button onClick={() => this.handleError()} >Login</button>
         </div>
       </div>

@@ -60,3 +60,31 @@
 .error {
   color: red;
 }
+
+.errorInput {
+  border: 1px solid red;
+}
+
+.correctInput {
+  border: 1px solid green;
+}
+
+.messages-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.sender {
+  align-self: flex-end;
+  background-color: #66ffe3;
+  padding: 0 5px;
+  border-radius: 0 0 0 10px;
+  margin: 1px 0;
+}
+
+.receiver {
+  align-self: flex-start;
+  background-color: #fc72b8;
+  border-radius: 0 10px 0 0;
+  margin: 1px 0;
+}
