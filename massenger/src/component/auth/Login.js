@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../../logo.svg'
 import validate from '../../validation/ValidateFunction'
 import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
 export default class Login extends React.Component {
   constructor (props) {
@@ -72,6 +73,9 @@ export default class Login extends React.Component {
           <button onClick={() => this.handleError()} >
             <Link to='/messenger/'>Login</Link>
           </button>
+          <Button variant="contained" color="secondary">
+            Secondary
+          </Button>
         </div>
       </div>
     )

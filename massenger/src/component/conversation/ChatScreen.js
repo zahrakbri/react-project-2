@@ -1,17 +1,15 @@
 import React from 'react'
 import MessagesBox from './MessagesBox'
+import HeaderContainer from '../../container/HeaderContainer'
+import Footer from './Footer'
 
 class ChatScreen extends React.Component {
   render () {
     return (
       <div className='chat-screen' >
-        <div className='header'>
-          header
-        </div>
+        <HeaderContainer />
         <MessagesBox />
-        <div className='footer' >
-          footer
-        </div>
+        <Footer />
       </div>
     )
   }

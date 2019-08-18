@@ -1,5 +1,5 @@
 import React from 'react'
-import Conversation from './Conversation'
+import ConversationContainer from '../../container/ConversationContainer'
 
 class ConversationList extends React.Component {
   constructor () {
@@ -48,16 +48,15 @@ class ConversationList extends React.Component {
   render () {
     return (
       <div className='conversation-list'>
-        { this.state.conversationList.map((item, index) => {
-          return (
-            <Conversation
-              key={index}
-              name={item.firstName}
-              lastName={item.lastName}
-              latestMessage={item.latestMessage}
-              unseenMessage={item.unseenMessage} />
-          )
-        })
+        { this.state.conversationList.map((item, index) => (
+          <ConversationContainer
+            key={index}
+            name={item.firstName}
+            lastName={item.lastName}
+            latestMessage={item.latestMessage}
+            unseenMessage={item.unseenMessage} />
+        )
+        )
 
         }
       </div>

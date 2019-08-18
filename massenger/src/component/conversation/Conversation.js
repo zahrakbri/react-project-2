@@ -1,10 +1,10 @@
 import React from 'react'
+import { getUserName } from '../../action/conversation'
 
 class Conversation extends React.Component {
   render () {
-    console.log('propssss', this)
     return (
-      <div className='conversation'>
+      <div className='conversation' onClick={() => this.props.dispatch(getUserName(this.props.name, this.props.lastName))}>
         <img src='telegram.png' />
         <div>
           <div className='name-date'>

@@ -4,15 +4,22 @@ import Login from './component/auth/Login'
 import Messenger from './component/conversation/Messenger'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import SignUp from './component/auth/SignUp'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import conversation from './reducer/conversation'
+
+const store = createStore(conversation)
 
 export default class App extends React.Component {
   render () {
     return (
-      <Router>
-        <Route path='/' exact component={Login} />
-        <Route path='/signup/' exact component={SignUp} />
-        <Route path='/messenger/' component={Messenger} />
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Route path='/' exact component={Login} />
+          <Route path='/signup/' exact component={SignUp} />
+          <Route path='/messenger/' component={Messenger} />
+        </Router>
+      </Provider>
     )
   }
 }
