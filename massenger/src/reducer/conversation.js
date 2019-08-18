@@ -1,6 +1,7 @@
 const initial = {
   firstName: '',
-  lastName: ''
+  lastName: '',
+  newMessage: ''
 }
 
 const conversation = (state = initial, action) => {
@@ -8,8 +9,15 @@ const conversation = (state = initial, action) => {
   switch (action.type) {
     case 'SAVE_SELECTED_USER_NAME':
       return {
+        ...state,
         firstName: action.name,
         lastName: action.family
+      }
+
+    case 'SEND_NEW_MESSAGE':
+      return {
+        ...state,
+        newMessage: action.payload
       }
     default:
       return state

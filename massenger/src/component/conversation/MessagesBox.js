@@ -34,6 +34,7 @@ class MessagesBox extends React.Component {
     }
   }
   render () {
+    console.log('propsss:', this.props)
     return (
       <div className='messages-box'>
         {
@@ -49,6 +50,7 @@ class MessagesBox extends React.Component {
             }
           })
         }
+        <div className='sender' ><span>{this.props.newMessage}</span></div>
       </div>
     )
   }
