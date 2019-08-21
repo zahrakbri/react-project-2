@@ -48,6 +48,9 @@ class ConversationList extends React.Component {
   render () {
     return (
       <div className='conversation-list'>
+        <div>
+          <h1>+</h1>
+        </div>
         { this.state.conversationList.map((item, index) => (
           <ConversationContainer
             key={index}

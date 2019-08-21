@@ -1,7 +1,32 @@
 const initial = {
   firstName: '',
   lastName: '',
-  newMessage: ''
+  messageList: [
+    {
+      text: 'salam',
+      date: '3/2',
+      sender: 1,
+      receiver: 3
+    },
+    {
+      text: 'salam',
+      date: '3/2',
+      sender: 3,
+      receiver: 1
+    },
+    {
+      text: 'khoobi?',
+      date: '3/2',
+      sender: 1,
+      receiver: 3
+    },
+    {
+      text: 'Are',
+      date: '3/2',
+      sender: 3,
+      receiver: 1
+    }
+  ]
 }
 
 const conversation = (state = initial, action) => {
@@ -17,7 +42,15 @@ const conversation = (state = initial, action) => {
     case 'SEND_NEW_MESSAGE':
       return {
         ...state,
-        newMessage: action.payload
+        messageList: [
+          ...state.messageList,
+          {
+            text: action.payload,
+            date: new Date().getHours(),
+            sender: 1,
+            receiver: 3
+          }
+        ]
       }
     default:
       return state
