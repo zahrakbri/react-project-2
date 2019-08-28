@@ -1,8 +1,7 @@
 import React from 'react'
 import logo from '../../logo.svg'
 import validate from '../../validation/ValidateFunction'
-import { Link } from 'react-router-dom'
-import Button from '@material-ui/core/Button'
+import axios from 'axios'
 
 export default class Login extends React.Component {
   constructor (props) {
@@ -43,6 +42,20 @@ export default class Login extends React.Component {
     this.setState({ errors })
   }
 
+  handleRequest () {
+    axios.post('https://api.paywith.click/auth/signin/', {
+      email: this.state.fields.email,
+      password: this.state.fields.password
+    })
+      .then(function (response) {
+        console.log('data:', response.data)
+        window.localStorage.setItem('token', response.data.data.token)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
+
   handleEmail (e) {
     this.setState({ ...this.state, fields: { ...this.state.fields, email: e.target.value } })
   }
@@ -70,12 +83,9 @@ export default class Login extends React.Component {
           { this.state.errors.password !== null &&
             <span className='error'>{this.state.errors.password}</span>
           }
-          <button onClick={() => this.handleError()} >
-            <Link to='/messenger/'>Login</Link>
+          <button onClick={() => this.handleRequest()} >
+            Login
           </button>
-          <Button variant="contained" color="secondary">
-            Secondary
-          </Button>
         </div>
       </div>
     )

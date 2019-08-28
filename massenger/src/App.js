@@ -5,10 +5,11 @@ import Messenger from './component/conversation/Messenger'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import SignUp from './component/auth/SignUp'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import conversation from './reducer/conversation'
+import logger from 'redux-logger'
 
-const store = createStore(conversation)
+const store = createStore(conversation, applyMiddleware(logger))
 
 export default class App extends React.Component {
   render () {
