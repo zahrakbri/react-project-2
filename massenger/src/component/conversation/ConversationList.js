@@ -2,13 +2,16 @@ import React from 'react'
 import ConversationContainer from '../../container/ConversationContainer'
 import { connect } from 'react-redux'
 import { createNewConversation } from '../../action/conversation'
+import axios from 'axios'
 
 class ConversationList extends React.Component {
   constructor () {
     super()
 
     this.state = {
-      newConv: ''
+      newConv: '',
+      suggestionUsers: [],
+      token: window.localStorage.getItem('token')
     }
   }
 
@@ -21,6 +24,22 @@ class ConversationList extends React.Component {
     this.setState({ newConv: '' })
   }
 
+  handleSearch (e) {
+    let fdata = new FormData()
+    fdata.append('token', this.state.token)
+    fdata.append('query', e.target.value)
+    fdata.append('size', 4)
+
+    axios.post('https://api.paywith.click/explore/search/contacts/', fdata)
+      .then((response) => {
+        console.log('data:', response.data)
+        this.setState({ suggestionUsers: response.data.data.users })
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
+
   render () {
     console.log('conversationlist props', this.props)
     return (
@@ -29,12 +48,18 @@ class ConversationList extends React.Component {
           <input
             type='text'
             name='newConv'
-            value={this.state.newConv}
-            onChange={(e) => this.handleNewConv(e)}
+            onChange={(e) => this.handleSearch(e)}
           />
-          <span
-            onClick={() => this.handleClick()}
-          >+</span>
+          {
+            this.state.suggestionUsers.map((user, index) => {
+              return (
+                <p key={index}>
+                  {user.email}
+                </p>
+              )
+            })
+          }
+
         </div>
         { this.props.conversationList.map((item, index) => (
           <ConversationContainer
@@ -46,7 +71,7 @@ class ConversationList extends React.Component {
         )
         )
 
-        }from
+        }
       </div>
     )
   }
