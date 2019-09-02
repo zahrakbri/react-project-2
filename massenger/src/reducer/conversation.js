@@ -67,7 +67,6 @@ const initial = {
 }
 
 const conversation = (state = initial, action) => {
-  console.log('yyyy', action, state)
   switch (action.type) {
     case 'SAVE_SELECTED_USER_NAME':
       return {
@@ -102,6 +101,14 @@ const conversation = (state = initial, action) => {
           },
           ...state.conversationList
         ]
+      }
+
+    case 'EDIT_MESSAGE':
+      let newMessagelist = state.messageList
+      newMessagelist[action.index]['text'] = action.payload
+      return {
+        ...state,
+        messageList: newMessagelist
       }
     default:
       return state

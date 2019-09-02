@@ -53,7 +53,7 @@ class ConversationList extends React.Component {
           {
             this.state.suggestionUsers.map((user, index) => {
               return (
-                <p key={index}>
+                <p key={user.id}>
                   {user.email}
                 </p>
               )

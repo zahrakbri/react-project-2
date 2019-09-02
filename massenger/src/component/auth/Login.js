@@ -2,8 +2,9 @@ import React from 'react'
 import logo from '../../logo.svg'
 import validate from '../../validation/ValidateFunction'
 import axios from 'axios'
+import { withRouter } from 'react-router'
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   constructor (props) {
     super(props)
 
@@ -47,9 +48,9 @@ export default class Login extends React.Component {
       email: this.state.fields.email,
       password: this.state.fields.password
     })
-      .then(function (response) {
-        console.log('data:', response.data)
+      .then((response) => {
         window.localStorage.setItem('token', response.data.data.token)
+        this.props.history.push('/messenger/')
       })
       .catch(function (error) {
         console.log(error)
@@ -61,7 +62,7 @@ export default class Login extends React.Component {
   }
 
   render () {
-    console.log('state', this.state)
+    console.log('pppppp', this.props)
     return (
       <div className='container'>
         <div className='loginPage'>
@@ -91,3 +92,5 @@ export default class Login extends React.Component {
     )
   }
 }
+
+export default withRouter(Login)

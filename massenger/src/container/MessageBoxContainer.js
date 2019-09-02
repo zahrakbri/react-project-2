@@ -5,4 +5,8 @@ const mapStateToProps = (state) => ({
   messageList: state.messageList
 })
 
-export default connect(mapStateToProps)(MessageBox)
+const mapDispatchToProps = (dispatch) => ({
+  dispatch: dispatch
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MessageBox)

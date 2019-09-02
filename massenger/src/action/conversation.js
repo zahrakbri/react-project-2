@@ -13,3 +13,9 @@ export const createNewConversation = (name) => ({
   type: 'CREATE_NEW_CONVERSATION',
   payload: name
 })
+
+export const editMessage = (text, index) => ({
+  type: 'EDIT_MESSAGE',
+  payload: text,
+  index: index
+})
