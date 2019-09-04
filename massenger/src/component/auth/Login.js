@@ -35,12 +35,24 @@ class Login extends React.Component {
   }
 
   handleError () {
+    let valid = true
     let errors = {
       email: validate('email', this.state.fields.email),
       password: validate('password', this.state.fields.password)
     }
     console.log('errorrr', errors)
-    this.setState({ errors })
+    this.setState({ errors },
+      () => {
+        Object.values(this.state.errors).map((item) => {
+          if (item !== null) {
+            valid = false
+          }
+        })
+        if (valid) {
+          this.handleRequest()
+        }
+      }
+    )
   }
 
   handleRequest () {
@@ -84,7 +96,7 @@ class Login extends React.Component {
           { this.state.errors.password !== null &&
             <span className='error'>{this.state.errors.password}</span>
           }
-          <button onClick={() => this.handleRequest()} >
+          <button onClick={() => this.handleError()} >
             Login
           </button>
         </div>

@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import conversation from './reducer/conversation'
 import logger from 'redux-logger'
+import Profile from './component/auth/Profile'
 
 const store = createStore(conversation, applyMiddleware(logger))
 
@@ -18,6 +19,7 @@ export default class App extends React.Component {
         <Router>
           <Route path='/' exact component={Login} />
           <Route path='/signup/' exact component={SignUp} />
+          <Route path='/profile/' exact component={Profile} />
           <Route path='/messenger/' component={Messenger} />
         </Router>
       </Provider>
